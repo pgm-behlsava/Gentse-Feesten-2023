@@ -291,6 +291,7 @@ main {
   right: 0;
   width: 100vw;
   height: 100vh;
+  z-index: 1;
   transition: 0.2s ease;
 }
 
@@ -453,7 +454,6 @@ main {
   grid-column-start: 3;
 }
 
-
 .hero-day {
   display: flex;
   flex-direction: column;
@@ -466,6 +466,87 @@ main {
   padding: 1rem;
 }
 
+.hero-day:hover {
+  cursor: pointer;
+  color: var(--white);
+  background-color: var(--black);
+}
+
 .hero-day strong {
   font-size: 1.3rem;
 }
+
+/*
+---------------------------
+  HOME EVENTS
+---------------------------
+*/
+
+#event-list-container {
+  padding: 3rem 3rem 3rem 30vw;
+}
+
+#event-list {
+  display: flex;
+  overflow-x: scroll;
+  gap: 2rem;
+}
+
+.event-item {
+  width: 50vw;
+  list-style: none;
+}
+
+.event-thumbnail {
+  position: relative;
+}
+
+.event-thumbnail img {
+  width: 30vw;
+}
+
+.event-date {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.5rem;
+  background-color: var(--black);
+  color: var(--white);
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.event-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: var(--black);
+  color: var(--white);
+  width: 90%;
+  padding-left: 0.5rem;
+  z-index: 1;
+}
+
+.event-info {
+  display: flex;
+  gap: 1rem;
+}
+
+.event-location {
+  background-color: var(--red);
+  color: var(--black);
+  padding: 0 0.5rem;
+  margin-left: 1rem;
+}
+
+/*
+---------------------------
+  HOME NEWS
+---------------------------
+*/
+
+/*
+---------------------------
+  FOOTER
+---------------------------
+*/
