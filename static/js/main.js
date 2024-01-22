@@ -1,57 +1,24 @@
-import { animateRandomHeaderLogo } from "./header.js";
+import { animateRandomHeaderLogo, animateRandomCampaignLogo } from "./logos.js";
 import { addClass, removeClass } from "./helpers/class.js";
-import { generateRandomNumber } from "./helpers/randomNumber.js";
+import { generateRandomNumber } from "./helpers/numbers.js";
 import { fetchData } from "./handlers/dataHandler.js";
-import { buildEventsUI, generateRandomEvents } from "./rendering/rendering.js";
-export { $openMenuButton, $closeMenuButton, $hamburgerMenu, $campaignLogo, $headerLogo, registerListeners, animateRandomCampaignLogo, eventsAPI, categoriesAPI, newsAPI }
+import { buildEventsUI, buildNewsUI, generateRandomEvents } from "./rendering/rendering.js";
+export { $openMenuButton, $closeMenuButton, $hamburgerMenu, $campaignLogo, $headerLogo, registerListeners, animateRandomCampaignLogo, eventsAPI, newsAPI, categoriesAPI }
 
-const eventsAPI = "https://www.pgm.gent/data/gentsefeesten/events_500.json";
+const eventsAPI = "https://www.pgm.gent/data/gentsefeesten/events.json";
 const categoriesAPI = "https://www.pgm.gent/data/gentsefeesten/categories.json";
 const newsAPI = "https://www.pgm.gent/data/gentsefeesten/news.json";
 
-const $headerLogo = document.querySelectorAll(".logo-container img");
-const $campaignLogo = document.querySelectorAll(".campaign-logo-container img");
-const $openMenuButton = document.querySelector(".hamburger-icon--header");
-const $closeMenuButton = document.querySelector(".hamburger-icon-close");
-const $hamburgerMenu = document.getElementById("hamburger-menu");
-const $eventList = document.getElementById("event-list");
+const $headerLogo = document.querySelectorAll('.logo-container img');
+const $campaignLogo = document.querySelectorAll('.campaign-logo-container img');
+const $openMenuButton = document.querySelector('.hamburger-icon--header');
+const $closeMenuButton = document.querySelector('.hamburger-icon-close');
+const $hamburgerMenu = document.getElementById('hamburger-menu');
+const $eventList = document.getElementById('home-event-list');
+const $newsList = document.getElementById('home-news-list');
 
 let events;
-
-function animateRandomCampaignLogo($elements, number) {
-  $elements.forEach(($element) => {
-    if (number < 0.16)
-      $element.setAttribute(
-        "src",
-        "static/img/Logos/Gentse Feesten Logos/campagne-1-G.png"
-      );
-    else if (number >= 0.16 && number < 0.32)
-      $element.setAttribute(
-        "src",
-        "static/img/Logos/Gentse Feesten Logos/campagne-2-E.png"
-      );
-    else if (number >= 0.32 && number < 0.48)
-      $element.setAttribute(
-        "src",
-        "static/img/Logos/Gentse Feesten Logos/campagne-3-N.png"
-      );
-    else if (number >= 0.48 && number < 0.64)
-      $element.setAttribute(
-        "src",
-        "static/img/Logos/Gentse Feesten Logos/campagne-4-T.png"
-      );
-    else if (number >= 0.64 && number < 0.8)
-      $element.setAttribute(
-        "src",
-        "static/img/Logos/Gentse Feesten Logos/campagne-5-S.png"
-      );
-    else
-      $element.setAttribute(
-        "src",
-        "static/img/Logos/Gentse Feesten Logos/campagne-6-E.png"
-      );
-  });
-}
+let news;
 
 function registerListeners() {
   $openMenuButton.addEventListener("click", () => {
@@ -75,7 +42,10 @@ async function initialize() {
   });
 
   events = await fetchData(eventsAPI);
-  if ($eventList) buildEventsUI($eventList, generateRandomEvents(events));
+  news = await fetchData(newsAPI);
+  
+  if ($eventList) buildEventsUI($eventList, generateRandomEvents(events, 8));
+  if ($newsList) buildNewsUI($newsList, news);
   registerListeners();
 }
 

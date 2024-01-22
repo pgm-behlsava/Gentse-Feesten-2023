@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/img/icons/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="static/css/reset.css">
     <link rel="stylesheet" href="static/css/main.css">
     <title>Gentse Feesten 2023</title>
@@ -20,7 +21,7 @@
                         <a href="news.html">Nieuws</a>
                     </li>
                     <li>
-                        <a href="day.html">Programma</a>
+                        <a href="events/day.html">Programma</a>
                     </li>
                     <li>
                         <a href="#">Praktisch</a>
@@ -66,7 +67,7 @@
                             <a href="news.html">Nieuws</a>
                         </li>
                         <li>
-                            <a href="day.html">Programma</a>
+                            <a href="events/day.html">Programma</a>
                         </li>
                         <li>
                             <a href="#">Praktisch</a>
@@ -114,11 +115,11 @@
     <!-- MAIN -->
     <main>
         <!-- SEARCH -->
-        <section class="search-section">
-            <h1>Programma doorzoeken</h1>
+        <section class="m-2rem">
+            <h1 class="page-title">Programma doorzoeken</h1>
             <section id="searchbar-container" class="searchbar-container flex flex--center flex--col">
                 <form class="flex">
-                    <input name="search" type="search" placeholder="Doorzoek het programma..." id="input-search">
+                    <input name="search" type="search" class="searchbar" placeholder="Doorzoek het programma..." id="input-search">
                     <button id="btn-search" class="btn--search" type="submit">
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                             <path fill="currentColor" d="M31.474 28.951l-6.043-6.025c1.95-2.484 3.007-5.551 3.004-8.708 0-2.812-0.834-5.561-2.396-7.899s-3.783-4.16-6.381-5.237c-2.598-1.076-5.457-1.358-8.215-0.809s-5.291 1.903-7.28 3.891-3.342 4.522-3.891 7.28-0.267 5.617 0.809 8.215c1.076 2.598 2.898 4.818 5.237 6.381s5.087 2.396 7.899 2.396c3.157 0.004 6.225-1.054 8.708-3.004l6.025 6.043c0.165 0.167 0.362 0.299 0.578 0.389s0.449 0.137 0.684 0.137c0.235 0 0.467-0.047 0.683-0.137s0.413-0.223 0.578-0.389c0.167-0.165 0.299-0.362 0.389-0.578s0.137-0.449 0.137-0.683-0.046-0.467-0.137-0.684c-0.090-0.217-0.222-0.413-0.389-0.578zM3.554 14.218c0-2.109 0.625-4.171 1.797-5.924s2.837-3.12 4.786-3.927c1.948-0.807 4.092-1.018 6.161-0.607s3.969 1.427 5.46 2.918c1.491 1.491 2.507 3.391 2.918 5.46s0.2 4.212-0.607 6.161c-0.807 1.948-2.174 3.614-3.927 4.785s-3.815 1.797-5.924 1.797c-2.828 0-5.54-1.123-7.54-3.123s-3.123-4.712-3.123-7.54z"></path>
@@ -127,28 +128,30 @@
                 </form>
                 <section id="searchbar-results"></section>
             </section>
-            <section class="mr-2rem flex layout-buttons">
-                <button id="btn-grid" class="btn--toggle active flex flex--center">
-                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                        <path fill="currentColor" d="M0 28c0 2.209 1.791 4 4 4s4-1.791 4-4v0c0-2.209-1.791-4-4-4s-4 1.791-4 4v0M4 12c-2.209 0-4 1.791-4 4s1.791 4 4 4c2.209 0 4-1.791 4-4s-1.791-4-4-4zM28 8c2.209 0 4-1.791 4-4s-1.791-4-4-4c-2.209 0-4 1.791-4 4s1.791 4 4 4zM0 4c0 2.209 1.791 4 4 4s4-1.791 4-4v0c0-2.209-1.791-4-4-4s-4 1.791-4 4v0M28 12c-2.209 0-4 1.791-4 4s1.791 4 4 4c2.209 0 4-1.791 4-4s-1.791-4-4-4zM28 24c-2.209 0-4 1.791-4 4s1.791 4 4 4c2.209 0 4-1.791 4-4s-1.791-4-4-4zM12 28c0 2.209 1.791 4 4 4s4-1.791 4-4v0c0-2.209-1.791-4-4-4s-4 1.791-4 4v0M12 4c0 2.209 1.791 4 4 4s4-1.791 4-4v0c0-2.209-1.791-4-4-4s-4 1.791-4 4v0M16 12c-2.209 0-4 1.791-4 4s1.791 4 4 4c2.209 0 4-1.791 4-4s-1.791-4-4-4z"></path>
-                    </svg>
-                </button>
-                <button id="btn-list" class="btn--toggle flex flex--center">
-                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="45" height="32" viewBox="0 0 45 32">
-                        <path fill="currentColor" d="M13.742 5.053h29.192c1.395 0 2.526-1.131 2.526-2.526s-1.132-2.526-2.526-2.526h-29.192c-1.396 0-2.526 1.131-2.526 2.526s1.131 2.526 2.526 2.526zM42.934 13.474h-29.192c-1.396 0-2.526 1.131-2.526 2.526s1.131 2.526 2.526 2.526h29.192c1.395 0 2.526-1.131 2.526-2.526s-1.132-2.526-2.526-2.526zM42.934 26.947h-29.192c-1.396 0-2.526 1.132-2.526 2.526s1.131 2.526 2.526 2.526h29.192c1.395 0 2.526-1.132 2.526-2.526s-1.132-2.526-2.526-2.526zM2.537 0h-0.022c-1.396 0-2.515 1.131-2.515 2.526s1.141 2.526 2.537 2.526 2.526-1.131 2.526-2.526-1.131-2.526-2.526-2.526zM2.537 13.474h-0.022c-1.396 0-2.515 1.131-2.515 2.526s1.141 2.526 2.537 2.526 2.526-1.131 2.526-2.526-1.131-2.526-2.526-2.526zM2.537 26.947h-0.022c-1.396 0-2.515 1.132-2.515 2.526s1.141 2.526 2.537 2.526 2.526-1.132 2.526-2.526c0-1.395-1.131-2.526-2.526-2.526z"></path>
-                    </svg>
-                </button>
-            </section>
         </section>
         <!-- EVENTS -->
-        <ul id="search-results" class="events-container mr-2rem">
+        <section class="m-2rem flex layout-buttons">
+            <button id="btn-grid" class="btn--toggle active flex flex--center">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                    <path fill="currentColor" d="M0 28c0 2.209 1.791 4 4 4s4-1.791 4-4v0c0-2.209-1.791-4-4-4s-4 1.791-4 4v0M4 12c-2.209 0-4 1.791-4 4s1.791 4 4 4c2.209 0 4-1.791 4-4s-1.791-4-4-4zM28 8c2.209 0 4-1.791 4-4s-1.791-4-4-4c-2.209 0-4 1.791-4 4s1.791 4 4 4zM0 4c0 2.209 1.791 4 4 4s4-1.791 4-4v0c0-2.209-1.791-4-4-4s-4 1.791-4 4v0M28 12c-2.209 0-4 1.791-4 4s1.791 4 4 4c2.209 0 4-1.791 4-4s-1.791-4-4-4zM28 24c-2.209 0-4 1.791-4 4s1.791 4 4 4c2.209 0 4-1.791 4-4s-1.791-4-4-4zM12 28c0 2.209 1.791 4 4 4s4-1.791 4-4v0c0-2.209-1.791-4-4-4s-4 1.791-4 4v0M12 4c0 2.209 1.791 4 4 4s4-1.791 4-4v0c0-2.209-1.791-4-4-4s-4 1.791-4 4v0M16 12c-2.209 0-4 1.791-4 4s1.791 4 4 4c2.209 0 4-1.791 4-4s-1.791-4-4-4z"></path>
+                </svg>
+            </button>
+            <button id="btn-list" class="btn--toggle flex flex--center">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="45" height="32" viewBox="0 0 45 32">
+                    <path fill="currentColor" d="M13.742 5.053h29.192c1.395 0 2.526-1.131 2.526-2.526s-1.132-2.526-2.526-2.526h-29.192c-1.396 0-2.526 1.131-2.526 2.526s1.131 2.526 2.526 2.526zM42.934 13.474h-29.192c-1.396 0-2.526 1.131-2.526 2.526s1.131 2.526 2.526 2.526h29.192c1.395 0 2.526-1.131 2.526-2.526s-1.132-2.526-2.526-2.526zM42.934 26.947h-29.192c-1.396 0-2.526 1.132-2.526 2.526s1.131 2.526 2.526 2.526h29.192c1.395 0 2.526-1.132 2.526-2.526s-1.132-2.526-2.526-2.526zM2.537 0h-0.022c-1.396 0-2.515 1.131-2.515 2.526s1.141 2.526 2.537 2.526 2.526-1.131 2.526-2.526-1.131-2.526-2.526-2.526zM2.537 13.474h-0.022c-1.396 0-2.515 1.131-2.515 2.526s1.141 2.526 2.537 2.526 2.526-1.131 2.526-2.526-1.131-2.526-2.526-2.526zM2.537 26.947h-0.022c-1.396 0-2.515 1.132-2.515 2.526s1.141 2.526 2.537 2.526 2.526-1.132 2.526-2.526c0-1.395-1.131-2.526-2.526-2.526z"></path>
+                </svg>
+            </button>
+        </section>
+        <section class="events-wrapper m-2rem">
+            <ul id="search-results" class="events-container">
 
-        </ul>
+            </ul>
+        </section>
+        
         <!-- PAGINATION -->
         <ul id="page-container" class="pagination flex flex--center">
             
         </ul>
-        <!--  -->
     </main>
 
     <!-- FOOTER -->
@@ -174,14 +177,14 @@
                     <h3>Schrijf je in op de nieuwsbrief van de Gentse Feesten</h3>
                     <form class="flex flex--col" name="email">
                         <input type="email" placeholder="Jouw e-mailadres">
-                        <button name="send" class="uppercase">Inschrijven</button>
+                        <button class="uppercase">Inschrijven</button>
                     </form>
                     <p>De stad Gent zal de persoonsgegevens die je invult met respect voor jouw <a href="#">privacy</a> behandelen.</p>
                 </section>
             </section>
         </section>
         <section class="footer-tail pos-r">
-            <section class="date-circle-bottom flex flex--center pos-a">
+            <section class="date-circle date-circle--bottom flex flex--center pos-a">
                 <span>14 - 23 juli</span>
             </section>
             <section class="footer-tail-items flex flex--col">
