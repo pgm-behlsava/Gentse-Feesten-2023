@@ -3,7 +3,7 @@ export {animateRandomCampaignLogo, animateRandomHeaderLogo};
 const url = new URL(location.href);
 
 function animateRandomHeaderLogo($elements, number) {
-  if (url.pathname !== '/events/day.html') {
+  // if (url.pathname !== '/events/day.html') {
     $elements.forEach(($element) => {
       if (number < 0.16)
         $element.setAttribute(
@@ -36,7 +36,8 @@ function animateRandomHeaderLogo($elements, number) {
           "static/img/logos/GF-logo-2023-6-E.svg"
         );
     });
-  } 
+  // } 
+  
   // else {
   //   $elements.forEach(($element) => {
   //     if (number < 0.16)
