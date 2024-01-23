@@ -46,7 +46,6 @@ function searchByDay() {
   filteredEvents = filteredEvents.sort((a, b) => a.sort_key - b.sort_key);
   randomEvents = generateRandomEvents(filteredEvents, 3);
 
-  console.log(filteredEvents);
   buildEventsSpotlightUI($eventSpotlight, randomEvents);
   buildEventsByCategoryUI($categoryContainer, filteredEvents, categories);
   buildFilterUI($filterBody, categories);

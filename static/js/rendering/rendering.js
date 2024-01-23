@@ -224,7 +224,7 @@ function generateHTMLForHomePageNews(news) {
         <a href="news.html">
           <h2>${item.title}</h2>
           <figure class="news-item-arrow">
-            <img src="../../static/img/icons/arrow-right-long.svg" alt="arrow-right">
+            <img src="static/img/icons/arrow-right-long.svg" alt="arrow-right">
           </figure>
         </a>
       </li>
@@ -249,7 +249,7 @@ function generateHTMLForNewsPage(news) {
           <section class="news-item-desc flex flex--col">
             <h2>${item.title}</h2>
             <figure class="news-item-arrow">
-              <img src="../../static/img/icons/arrow-right-long.svg" alt="arrow-right">
+              <img src="static/img/icons/arrow-right-long.svg" alt="arrow-right">
             </figure>
           </section>
           <figure class="news-item-image">
