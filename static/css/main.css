@@ -523,7 +523,7 @@ main {
 
 .hero-bg .campaign-logo-container {
   min-width: 30rem;
-  width: 35vw;
+  width: 25%;
   max-height: 100%;
 }
 
@@ -750,6 +750,12 @@ main {
 .event-list-location {
   border: 1px solid currentColor;
   padding: 1rem;
+}
+
+.category-container h1 {
+  margin: 2rem;
+  text-align: center;
+  font-size: 3rem;
 }
 
 /*

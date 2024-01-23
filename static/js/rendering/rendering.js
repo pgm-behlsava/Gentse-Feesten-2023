@@ -1,5 +1,6 @@
+import { filterDataByCategory } from "../helpers/filter.js";
 import { transformCategoryStringForID } from "../helpers/strings.js";
-export {buildEventsUI, buildEventsSpotlightUI, buildNewsUI, buildFilterUI, generateRandomEvents, generateHTMLForSearch}
+export {buildEventsUI, buildEventsSpotlightUI, buildNewsUI, buildFilterUI, buildEventsByCategoryUI, generateRandomEvents, generateHTMLForSearch}
 
 const url = new URL(location.href);
 
@@ -29,6 +30,15 @@ function buildNewsUI($element, news) {
 
 function buildFilterUI($element, filter) {
   $element.innerHTML = generateHTMLForCategories(filter);
+}
+
+function buildEventsByCategoryUI($element, events, categories) {
+  if (!$element.classList.contains("layout-list")) {
+    $element.innerHTML = generateHTMLForEventsByCategory(events, categories);
+  } else {
+    $element.innerHTML = generateHTMLListForEventsByCategory(events, categories);
+  }
+  
 }
 
 function generateRandomEvents(events, numberOfEvents) {
@@ -75,7 +85,7 @@ function generateHTMLForEvents(events) {
           break;
       }
   
-      if (event.image !== null && event.image.thumb !== null) {
+      if (event.image !== null && event.image.full !== null && event.image.thumb !== null) {
         html += `
             <li class="event-item">
               <a href="detail.html">
@@ -116,7 +126,7 @@ function generateHTMLForEvents(events) {
   } else {
     events.forEach((event) => {
   
-      if (event.image !== null && event.image.thumb !== null) {
+      if (event.image !== null && event.image.full !== null && event.image.thumb !== null) {
         html += `
             <li class="event-item">
               <a href="detail.html">
@@ -280,6 +290,106 @@ function generateHTMLForCategories(categories) {
       `;
     });
   }
+
+  return html;
+}
+
+function generateHTMLForEventsByCategory(events, categories) {
+  let html = "";
+  let id;
+  let filteredEvents;
+  
+  categories.forEach(category => {
+    id = transformCategoryStringForID(category);
+    filteredEvents = filterDataByCategory(events, category);
+
+    html += `
+      <li>
+        <h1 id="${id}">${category}</h1>
+        <ul class="events-container">
+    `;
+
+    for (const event of filteredEvents) {
+      if (event.image !== null && event.image.full !== null && event.image.thumb !== null) {
+        html += `
+          <li class="event-item">
+            <a href="detail.html">
+              <div class="event-card">
+                <div class="event-thumbnail">
+                  <img src="${event.image.thumb}" alt="Optreden GF">
+                  <div class="event-info">
+                    <h3 class="event-title">${event.title}</h3>
+                    <p class="event-location">${event.location}</p>
+                    <p class="event-start">${event.start}</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+        `;
+      } else {
+        html += `
+          <li class="event-item">
+            <a href="detail.html">
+              <div class="event-card">
+                <div class="event-thumbnail">
+                  <img src="../static/img/placeholder.jpg" alt="Optreden GF">
+                  <div class="event-info">
+                    <h3 class="event-title">${event.title}</h3>
+                    <p class="event-location">${event.location}</p>
+                    <p class="event-start">${event.start}</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+        `;
+      }
+    }
+
+    html += `
+      </ul>
+      </li>
+    `;
+  });
+
+  return html;
+}
+
+function generateHTMLListForEventsByCategory(events, categories) {
+  let html = "";
+  let id;
+  let filteredEvents;
+  
+  categories.forEach(category => {
+    id = transformCategoryStringForID(category);
+    filteredEvents = filterDataByCategory(events, category);
+
+    html += `
+      <li>
+        <h1 id="${id}">${category}</h1>
+        <ul class="events-container">
+    `;
+
+    for (const event of filteredEvents) {
+      html += `
+        <li class="flex">
+          <a href="detail.html" class="event-list-item flex">
+            <div class="event-list-date flex">
+              <p class="event-list-start">${event.start}</p> 
+            </div>
+            <h3 class="event-list-title">${event.title}</h3>   
+            <p class="event-list-location">${event.location}</p>
+          </a>
+        </li>
+      `;
+    }
+
+    html += `
+      </ul>
+      </li>
+    `;
+  });
 
   return html;
 }

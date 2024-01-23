@@ -19,7 +19,7 @@ function filterDataByDay(data, day) {
 
 function filterDataByCategory(data, category) {
   const filteredData = data.filter(item => {
-    return item.category === category;
+    return item.category.includes(category);
   });
   return filteredData;
 }
